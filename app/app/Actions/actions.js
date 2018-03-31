@@ -11,20 +11,20 @@
  export function addTask(data){
     return {
         type: ADD_TASK,
-        data: data
+        data
     }
  }
 
  export function deleteTask(id){
      return {
          type: DEL_TASK,
-         id: id
+         id
      }
  }
 
  export function toggleCompleted(id){
      return {
          type: TOGGLE_COMPLETED,
-         id: id
+         id
      }
  }
