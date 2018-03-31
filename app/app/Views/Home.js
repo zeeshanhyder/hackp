@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import { View, ToolbarAndroid, Text, Button } from 'react-native';
+import { View, ToolbarAndroid, ScrollView, StyleSheet, Text, Button, FlatList } from 'react-native';
 
 
 const style = {
   'toolbar': {
     height: 58,
-    backgroundColor: '#e1474a'
+    backgroundColor: '#ff6f00'
   },
   'main_content':{
     flex: 1,
     flexDirection:'column',
-    backgroundColor: '#fff',
+    backgroundColor: '#ff0',
     justifyContent: 'space-around',
     alignItems: 'center'
   }
@@ -30,14 +30,13 @@ class Home extends Component {
           actions={[]}
           titleColor='#fff'
           style={style.toolbar}
-
         />
         <View style={style.main_content} >
-
+          <Text style={{fontSize: 100, color: #568}}>TEstesttest</Text>
           <Button
             onPress = {()=>navigate('NewTask')}
             title="Add Task"
-            color="#e1474a"
+            color="#ff6f00"
             accessibilityLabel="Add new task"
           />
         </View>
@@ -45,5 +44,4 @@ class Home extends Component {
     );
   }
 }
-
 export default Home;
