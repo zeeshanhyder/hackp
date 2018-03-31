@@ -52,6 +52,12 @@ class Home extends Component {
             color="#ff6f00"
             accessibilityLabel="Add new task"
           />
+          <Button
+            onPress = {()=>navigate('TaskPopup')}
+            title="Completed tasks"
+            color="#ff6f00"
+            accessibilityLabel="View deleted tasks"
+          />
         </View>
       </View>
     );
