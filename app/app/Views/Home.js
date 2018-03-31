@@ -10,14 +10,18 @@ const style = {
   'main_content':{
     flex: 1,
     flexDirection:'column',
-    backgroundColor: '#ff0',
+    backgroundColor: '#fff',
     justifyContent: 'space-around',
-    alignItems: 'center'
+    alignItems: 'center',
+      padding: 30,
+  },
+  'item': {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
   }
 }
-
 class Home extends Component {
-
   doSomething(){
 
   }
@@ -26,13 +30,22 @@ class Home extends Component {
     return (
       <View style={{flex: 1, flexDirection: 'column'}}>
         <ToolbarAndroid
-          title="FunTaskIt"
+          title="FunTaskIT"
           actions={[]}
           titleColor='#fff'
           style={style.toolbar}
         />
         <View style={style.main_content} >
-          <Text style={{fontSize: 100, color: #568}}>TEstesttest</Text>
+          <FlatList
+          data={[
+            {task: 'Buy mushrooms'},
+            {task: 'Give brother gift card'},
+            {task: 'Join in games'},
+            {task: 'Joel'},
+          ]}
+          renderItem={({item}) => <Text style={style.item}>{item.task}</Text>}
+          />
+
           <Button
             onPress = {()=>navigate('NewTask')}
             title="Add Task"
