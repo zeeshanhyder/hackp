@@ -32,9 +32,25 @@ class Home extends Component {
   doSomething(){
 
   }
+
+  _parseData(data){
+    if(data === undefined){
+      return [];      
+    }
+    console.log(data)
+    return JSON.parse(data)
+  }
   render() {
     console.log(this.props.tasks)
     const { navigate } = this.props.navigation;
+    
+    //extract keys
+    _keyExtractor = (item, index) => item.id;
+    
+    
+    const taskList = <FlatList keyExtractor={(item)=>item.id} data={this._parseData(this.props.tasks)} renderItem={({item}) => <Text style={style.item}>{item.task}</Text>}/>
+    const loadingView = <Text>Please wait...</Text>
+
     return (
       <View style={{flex: 1, flexDirection: 'column'}}>
         <ToolbarAndroid
@@ -43,16 +59,9 @@ class Home extends Component {
           titleColor='#fff'
           style={style.toolbar}
         />
+        {this.props.tasks === undefined?loadingView:taskList}
         <View style={style.main_content} >
-          <FlatList
-          data={[
-            {task: 'Buy mushrooms'},
-            {task: 'Give brother gift card'},
-            {task: 'Join in games'},
-            {task: 'Joel'},
-          ]}
-          renderItem={({item}) => <Text style={style.item}>{item.task}</Text>}
-          />
+          
 
           <Button
             onPress = {()=>navigate('NewTask')}
