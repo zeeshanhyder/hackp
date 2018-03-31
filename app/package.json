@@ -30,10 +30,13 @@
   },
   "dependencies": {
     "@expo/vector-icons": "6.2.0",
+    "axios": "^0.18.0",
     "color": "^2.0.0",
     "eslint-config-prettier": "^2.9.0",
     "expo": "^23.0.2",
+    "firebase": "^4.12.1",
     "hoist-non-react-statics": "2.3.0",
+    "immutable": "^3.8.2",
     "moment": "2.18.1",
     "prop-types": "^15.6.1",
     "react": "16.0.0",
@@ -41,6 +44,7 @@
     "react-native-dropdownalert": "3.1.2",
     "react-native-extended-stylesheet": "0.8.0",
     "react-navigation": "1.0.0-beta.21",
-    "react-redux": "^5.0.7"
+    "react-redux": "^5.0.7",
+    "redux-react-firebase": "^2.6.1"
   }
 }
