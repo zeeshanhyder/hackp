@@ -1,6 +1,8 @@
 import React from "react";
 import { TextInput } from "react-native";
 
-const DefaultTextInput = () => <TextInput />;
+import styles from "./styles";
+
+const DefaultTextInput = () => <TextInput style={styles.defaultTextInput} />;
 
 export default DefaultTextInput;
