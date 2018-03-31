@@ -4,7 +4,7 @@ import { View, ToolbarAndroid, Text, Button } from 'react-native';
 
 const style = {
   'toolbar': {
-    height: 58, 
+    height: 58,
     backgroundColor: '#e1474a'
   },
   'main_content':{
@@ -30,10 +30,10 @@ class Home extends Component {
           actions={[]}
           titleColor='#fff'
           style={style.toolbar}
-           
+
         />
         <View style={style.main_content} >
-          
+
           <Button
             onPress = {()=>navigate('NewTask')}
             title="Add Task"
