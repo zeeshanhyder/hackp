@@ -1,23 +1,28 @@
 import React, { Component } from "react";
-import { View, ToolbarAndroid, Text, Button } from 'react-native';
+import { View, ToolbarAndroid, ScrollView, StyleSheet, Text, Button, FlatList } from 'react-native';
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
 const style = {
   'toolbar': {
-    height: 58, 
-    backgroundColor: '#e1474a'
+    height: 58,
+    backgroundColor: '#ff6f00'
   },
   'main_content':{
     flex: 1,
     flexDirection:'column',
     backgroundColor: '#fff',
     justifyContent: 'space-around',
-    alignItems: 'center'
+    alignItems: 'center',
+      padding: 30,
+  },
+  'item': {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
   }
 }
-
 class Home extends Component {
 
   constructor(props){
@@ -33,18 +38,26 @@ class Home extends Component {
     return (
       <View style={{flex: 1, flexDirection: 'column'}}>
         <ToolbarAndroid
-          title="FunTaskIt"
+          title="FunTaskIT"
           actions={[]}
           titleColor='#fff'
           style={style.toolbar}
-           
         />
         <View style={style.main_content} >
-          
+          <FlatList
+          data={[
+            {task: 'Buy mushrooms'},
+            {task: 'Give brother gift card'},
+            {task: 'Join in games'},
+            {task: 'Joel'},
+          ]}
+          renderItem={({item}) => <Text style={style.item}>{item.task}</Text>}
+          />
+
           <Button
             onPress = {()=>navigate('NewTask')}
             title="Add Task"
-            color="#e1474a"
+            color="#ff6f00"
             accessibilityLabel="Add new task"
           />
         </View>
