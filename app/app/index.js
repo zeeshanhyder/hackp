@@ -1,11 +1,13 @@
 import React from "react";
 import EStyleSheet from "react-native-extended-stylesheet";
 import {reactReduxFirebase, firebaseReducer} from 'react-redux-firebase';
+
 import {Provider} from 'react-redux';
 import {compose, combineReducers, createStore} from 'redux';
 import {appState, rrfConfig, firebase_config} from './Reducers/reducers';
 import Navigator from "./config/routes";
 import firebase from 'firebase';
+
 
 
 const createStoreWithFirebase = compose(

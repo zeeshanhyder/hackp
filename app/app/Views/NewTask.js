@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View, Text} from 'react-native';
+import {View, Text, TextInput} from 'react-native';
 
 
 
@@ -7,7 +7,10 @@ class NewTask extends Component{
     render(){
         return(
             <View>
-                <Text>New Screen</Text>
+                <TextInput
+                    style={{height: 40}}
+                    placeholder="Type new task here"
+                    />
             </View>
         )
 
