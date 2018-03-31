@@ -38,5 +38,7 @@ EStyleSheet.build({
 });
 
 export default () => (
+  <Provider store={store}>
     <Navigator />
+  </Provider>
 );
