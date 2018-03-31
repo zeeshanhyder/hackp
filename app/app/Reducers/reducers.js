@@ -3,14 +3,13 @@
  */
 
  import {ADD_TASK,DEL_TASK, TOGGLE_COMPLETED} from '../Actions/actions';
- import {combineReducers} from 'redux';
- import { reactReduxFirebase, firebaseReducer } from 'react-redux-firebase';
+ import {combineReducers, compose} from 'redux';
  import firebase from 'firebase';
 
 
 
  // Firebase init
- export const firebase_config = {
+ const firebase_config = {
     apiKey: "AIzaSyADqkRxMlwGa7LkxJSUhUhaKbK-LGaYRRc",
     authDomain: "funtaskplaces-1522483716126.firebaseapp.com",
     databaseURL: "https://funtaskplaces-1522483716126.firebaseio.com",
@@ -21,7 +20,7 @@
  export const rrfConfig = {
      userProfile: 'users'
  }
- 
+ firebase.initializeApp(firebase_config);
 
 
  // our reducer
@@ -47,7 +46,4 @@
     }
  }
 
-export const appState = combineReducers({
-    firebase: firebaseReducer,
-    tasks
-});
+export default appState = tasks;
