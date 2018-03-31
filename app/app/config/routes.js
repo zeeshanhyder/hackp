@@ -1,7 +1,8 @@
 import { StatusBar } from "react-native";
 import { StackNavigator } from "react-navigation";
 
-import Home from "../screens/Home";
+import Home from "../Views/Home";
+import NewTask from "../Views/NewTask";
 
 const HomeStack = StackNavigator(
   {
@@ -10,6 +11,9 @@ const HomeStack = StackNavigator(
       navigationOptions: {
         header: () => null
       }
+    },
+    NewTask:{
+      screen: NewTask
     }
   },
   {
