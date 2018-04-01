@@ -1,25 +1,55 @@
-import React from "react";
-import { View, Text } from "react-native";
-import { Card } from "react-native-material-ui";
+import React, { Component } from "react";
+import { View, ToolbarAndroid, ScrollView, StyleSheet, Text, Button, FlatList } from 'react-native';
 
-import { DefaultButton } from "../Components/Button";
-import { Container } from "../Components/Container";
-import { DefaultTextInput } from "../Components/TextInput";
 
-const TaskPopup = () => (
-  <Container>
-    <View>
-      <Card>
-        <DefaultTextInput placeholder="Task Name" />
-      </Card>
-    </View>
-    <View>
-      <Card>
-        <DefaultTextInput placeholder="Location" />
-      </Card>
-    </View>
-    <DefaultButton text="Task It" />
-  </Container>
-);
+const style = {
+  'toolbar': {
+    height: 58,
+    backgroundColor: '#ff6f00'
+  },
+  'done_tasks':{
+    flex: 1,
+    flexDirection:'column',
+    backgroundColor: '#fff',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    text-decoration: 'line-through',
+      padding: 30,
+  },
+  'item': {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  }
+}
+class TaskPopup extends Component {
+  doingSomething()
+  {
+
+  }
+  render(){
+    const { navigate } = this.props.navigation;
+    return(
+      <View style={style.done_tasks} >
+        <FlatList
+        data={[
+          {task: 'Buy mushrooms'},
+          {task: 'Give brother gift card'},
+          {task: 'Join in games'},
+          {task: 'Joel'},
+        ]}
+        renderItem={({item}) => <Text style={style.item}>{item.task}</Text>}
+        />
+        <Button
+          onPress = {()=>navigate('Home')}
+          title="Home"
+          color="#ff6f00"
+          accessibilityLabel="Home"
+        />
+        </View>
+    )
+
+  }
+}
 
 export default TaskPopup;

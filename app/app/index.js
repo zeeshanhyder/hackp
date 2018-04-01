@@ -1,21 +1,24 @@
 import React from "react";
 import EStyleSheet from "react-native-extended-stylesheet";
 import { COLOR, ThemeProvider } from "react-native-material-ui";
-// import { reactReduxFirebase } from "react-redux-firebase";
-// import { Provider, createStore } from "react-redux";
-// import { compose } from "redux";
-// import firebase from "firebase";
+import firebase from "firebase";
+import { reactReduxFirebase, firebaseReducer } from "react-redux-firebase";
+import { Provider } from "react-redux";
+import { compose, combineReducers, createStore } from "redux";
 
-// import { appState, rrfConfig, firebaseConfig } from "./Reducers/reducers";
+import { appState, rrfConfig, firebaseConfig } from "./Reducers/reducers";
 import Navigator from "./config/routes";
-// firebase.initializeApp(firebaseConfig);
 
-// const createStoreWithFirebase = compose(
-//   reactReduxFirebase(firebase, rrfConfig)
-// )(createStore);
+const createStoreWithFirebase = compose(
+  reactReduxFirebase(firebase, rrfConfig)
+)(createStore);
 
-// const initialState = {};
-// const store = createStoreWithFirebase(appState, initialState);
+const rootReducer = combineReducers({
+  firebase: firebaseReducer
+});
+
+const initialState = {};
+const store = createStoreWithFirebase(rootReducer, initialState);
 
 EStyleSheet.build({
   $primaryBlue: "#4f6d7a",
@@ -43,10 +46,9 @@ const uiTheme = {
 };
 
 export default () => (
-  // <Provider store={store}>
-  <ThemeProvider uiTheme={uiTheme}>
-    <Navigator />
-  </ThemeProvider>
-
-  // </Provider>
+  <Provider store={store}>
+    <ThemeProvider uiTheme={uiTheme}>
+      <Navigator />
+    </ThemeProvider>
+  </Provider>
 );
