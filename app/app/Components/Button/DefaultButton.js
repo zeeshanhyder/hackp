@@ -11,7 +11,8 @@ const DefaultButton = ({ text, onPress }) => (
       style={{
         container: { paddingHorizontal: 100, paddingVertical: 35 },
         text: {
-          fontSize: 20
+          fontSize: 20,
+          width: "40%"
         }
       }}
       raised

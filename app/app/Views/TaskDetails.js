@@ -5,7 +5,7 @@ import { DefaultButton } from "../Components/Button";
 import { Container } from "../Components/Container";
 import { DefaultTextInput, LocationTextInput } from "../Components/TextInput";
 
-class TaskPopup extends Component {
+class TaskDetails extends Component {
   handleLocationPress = () => {
     this.props.navigation.navigate("ChooseLocation");
   };
@@ -29,8 +29,8 @@ class TaskPopup extends Component {
   }
 }
 
-TaskPopup.propTypes = {
+TaskDetails.propTypes = {
   navigation: PropTypes.any
 };
 
-export default TaskPopup;
+export default TaskDetails;

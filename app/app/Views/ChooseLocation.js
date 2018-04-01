@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import {
   View,
   StatusBar,
@@ -12,6 +13,7 @@ import Map from "../Components/Map";
 import { Container } from "../Components/Container";
 import { GooglePlacesInput } from "../Components/TextInput";
 import colors from "../config/colors";
+import { DefaultButton } from "../Components/Button";
 
 const API_KEY = "AIzaSyBVaWYH-NKDC9Qd3q6sTabRj8OI_ktkM-c";
 
@@ -22,6 +24,10 @@ class ChooseLocation extends Component {
 
   handleSelectPlace = data => {
     this.renderPlaceID(data.place_id);
+  };
+
+  handleSelectLocation = () => {
+    this.props.navigation.navigate("TaskDetails");
   };
 
   renderPlaceID = placeID => {
@@ -46,6 +52,7 @@ class ChooseLocation extends Component {
   };
 
   render() {
+    console.log(this.props.navigation.state);
     return (
       <Container>
         <StatusBar translucent={false} barStyle="light-content" />
@@ -53,9 +60,14 @@ class ChooseLocation extends Component {
           <GooglePlacesInput handleSelectPlace={this.handleSelectPlace} />
         </View>
         <Map searchedLocation={this.state.searchedLocation} />
+        <DefaultButton text="Select" onPress={this.handleSelectLocation} />
       </Container>
     );
   }
 }
+
+ChooseLocation.propTypes = {
+  navigation: PropTypes.object
+};
 
 export default ChooseLocation;
