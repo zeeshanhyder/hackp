@@ -14,9 +14,10 @@ const style = {
     backgroundColor: colors.orange
   },
   main_content: {
-    flex: 1,
+    flex: 0,
+    height: 150,
     flexDirection: "column",
-    backgroundColor: "#fff",
+    backgroundColor: "rgba(0, 0, 0, 0)",
     justifyContent: "space-around",
     alignItems: "center",
     padding: 30

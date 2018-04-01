@@ -5,7 +5,7 @@ import { Button } from "react-native-material-ui";
 
 import styles from "./styles";
 
-const DefaultButton = ({ cStyle, text, onClick }) => (
+const DefaultButton = ({ cStyle, text, onPress }) => (
   <View style={styles.buttonContainer}>
     <Button
       style={
@@ -22,14 +22,14 @@ const DefaultButton = ({ cStyle, text, onClick }) => (
       primary
       text={text}
       upperCase={false}
-      onPress={onClick}
+      onPress={onPress}
     />
   </View>
 );
 
 DefaultButton.propTypes = {
   text: PropTypes.string,
-  onClick: PropTypes.func,
+  onPress: PropTypes.func,
   cStyle: PropTypes.object
 };
 

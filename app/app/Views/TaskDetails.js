@@ -14,7 +14,10 @@ class TaskDetails extends Component {
   handleSubmitButton = () => {
     this.props.navigation.goBack(null);
   };
-  handleDeleteAction = () => {};
+  handleDeleteButton = () => {
+    console.log("pressed delete");
+    this.props.navigation.goBack(null);
+  };
 
   render() {
     return (
@@ -50,7 +53,7 @@ class TaskDetails extends Component {
           />
           <DefaultButton
             text="Delete"
-            onPress={this.handleSubmitButton}
+            onPress={this.handleDeleteButton}
             cStyle={{
               container: {
                 paddingHorizontal: 100,
