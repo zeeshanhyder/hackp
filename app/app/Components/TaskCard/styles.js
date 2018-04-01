@@ -1,12 +1,10 @@
 import EStyleSheet from "react-native-extended-stylesheet";
 
 const styles = EStyleSheet.create({
-  defaultTextInput: {
-    fontSize: 20,
-    height: 80,
-    width: "100%",
-    paddingHorizontal: 20,
-    paddingVertical: 10
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44
   }
 });
 
