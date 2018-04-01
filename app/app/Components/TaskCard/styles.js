@@ -2,10 +2,11 @@ import EStyleSheet from "react-native-extended-stylesheet";
 
 const styles = EStyleSheet.create({
   item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44
-  }
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    fontSize: 18
+  },
+  underlayColor: "rgba(52, 52, 52, 0)"
 });
 
 export default styles;

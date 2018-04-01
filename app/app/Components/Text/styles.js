@@ -3,7 +3,7 @@ import EStyleSheet from "react-native-extended-stylesheet";
 export default EStyleSheet.create({
   text: {
     color: "$white",
-    fontSize: 12,
+    fontSize: 20,
     textAlign: "center"
   }
 });

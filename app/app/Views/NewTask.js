@@ -5,7 +5,7 @@ import {getNearbyPlace} from "../api/api_places";
 import {Container} from '../Components/Container'; 
 import { Card } from "react-native-material-ui";
 import { DefaultButton } from "../Components/Button";
-import { DefaultTextInput} from "../Components/TextInput";
+import { DefaultTextInput,LocationTextInput} from "../Components/TextInput";
 
 
 class NewTask extends Component{
@@ -29,6 +29,10 @@ class NewTask extends Component{
         getLocationAsync(this.state);
     }
 
+    handleLocationPress = () => {
+        this.props.navigation.navigate("ChooseLocation");
+      };
+
 
 
     render(){
@@ -38,17 +42,19 @@ class NewTask extends Component{
         return(
             <Container>
             <View>
-              <Card>
                 <DefaultTextInput placeholder="Task Name" />
-              </Card>
+              
             </View>
             <View>
-              <Card>
-                <DefaultTextInput placeholder="Location" />
-              </Card>
+              
+            <LocationTextInput
+                placeholder="Location"
+                onPress={this.handleLocationPress}
+                />
+              
             </View>
             <View style={{flex:1, flexDirection:"column",justifyContent:"center", alignItems:"center"}}>
-                {this.state.noLoc?<Text style={{color:"#d8d8d8"}}>Getting location...</Text>:null}
+                {this.state.noLoc?<Text style={{color:"#aaa"}}>Getting location...</Text>:null}
             </View>
             
             <DefaultButton text="Task It" />

@@ -1,15 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TextInput } from "react-native";
+import { TextInput, View } from "react-native";
+import { Card } from "react-native-material-ui";
 
 import styles from "./styles";
 
 const DefaultTextInput = ({ placeholder }) => (
-  <TextInput
-    style={styles.defaultTextInput}
-    underlineColorAndroid="transparent"
-    placeholder={placeholder}
-  />
+  <View>
+    <Card>
+      <TextInput
+        style={styles.defaultTextInput}
+        underlineColorAndroid="transparent"
+        placeholder={placeholder}
+      />
+    </Card>
+  </View>
 );
 
 DefaultTextInput.propTypes = {
