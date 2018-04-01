@@ -17,7 +17,7 @@ const HomeStack = StackNavigator(
     }
   },
   {
-    headerMode: "screen"
+    // headerMode: "screen"
   }
 );
 
