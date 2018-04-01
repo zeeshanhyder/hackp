@@ -6,6 +6,9 @@ import {Container} from '../Components/Container';
 import { Card } from "react-native-material-ui";
 import { DefaultButton } from "../Components/Button";
 import { DefaultTextInput,LocationTextInput} from "../Components/TextInput";
+import {firebaseConnect} from 'react-redux-firebase';
+import {compose} from 'redux';
+import {connect} from 'react-redux';
 
 
 class NewTask extends Component{
@@ -14,7 +17,8 @@ class NewTask extends Component{
         super(props)
         this.state = {
             location: {},
-            noLoc: true
+            noLoc: true,
+            taskDesc: ''
         }
         getLocationAsync = async (state) => {
             const { status } = await Permissions.askAsync(Permissions.LOCATION);
@@ -27,12 +31,36 @@ class NewTask extends Component{
             
         }
         getLocationAsync(this.state);
+
+        this.handleOnClick = this.handleOnClick.bind(this);
+        this.handleOnTaskDescChange = this.handleOnTaskDescChange.bind(this);
     }
 
     handleLocationPress = () => {
-        this.props.navigation.navigate("ChooseLocation");
+        
+        this.props.navigation.navigate("ChooseLocation",{data: this.state.taskDesc, key: this.props.navigation.key});
       };
 
+    
+    handleOnClick = () =>{
+        data = JSON.parse(this.props.tasks)
+        data.push({
+            id: new Date(),
+            task: this.state.taskDesc,
+            loc: this.props.selLoc,
+            completed: false 
+        })
+        this.props.firebase.set("tasks",JSON.stringify(data))
+        this.props.firebase.set("selLoc","")
+        this.props.navigation.goBack(null)
+    }
+
+    handleOnTaskDescChange = (event) =>{
+        this.setState({
+            taskDesc: event
+        })
+        
+    }
 
 
     render(){
@@ -42,7 +70,7 @@ class NewTask extends Component{
         return(
             <Container>
             <View>
-                <DefaultTextInput placeholder="Task Name" />
+                <DefaultTextInput value={this.state.taskDesc} onChangeText={this.handleOnTaskDescChange} placeholder="Task Name" />
               
             </View>
             <View>
@@ -50,6 +78,7 @@ class NewTask extends Component{
             <LocationTextInput
                 placeholder="Location"
                 onPress={this.handleLocationPress}
+                
                 />
               
             </View>
@@ -57,11 +86,20 @@ class NewTask extends Component{
                 {this.state.noLoc?<Text style={{color:"#aaa"}}>Getting location...</Text>:null}
             </View>
             
-            <DefaultButton text="Task It" />
+            <DefaultButton onClick={this.handleOnClick} text="Task It" />
           </Container>
         )
 
     }
 }
 
-export default NewTask;
+export default compose(
+    firebaseConnect([
+      "tasks",
+      "selLoc" // { path: '/todos' } // object notation
+    ]),
+    connect(state => ({
+      tasks: state.firebase.data.tasks,
+      selLoc: state.firebase.data.selLoc
+    }))
+  )(NewTask);

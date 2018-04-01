@@ -5,13 +5,15 @@ import { Card } from "react-native-material-ui";
 
 import styles from "./styles";
 
-const DefaultTextInput = ({ placeholder }) => (
+const DefaultTextInput = ({ placeholder, onChangeText, value }) => (
   <View>
     <Card>
       <TextInput
         style={styles.defaultTextInput}
         underlineColorAndroid="transparent"
         placeholder={placeholder}
+        onChangeText={onChangeText}
+        value={value}
       />
     </Card>
   </View>

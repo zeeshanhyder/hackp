@@ -5,20 +5,21 @@ import { Button } from "react-native-material-ui";
 
 import styles from "./styles";
 
-const DefaultButton = ({ text, onPress }) => (
+const DefaultButton = ({ cStyle, text, onClick }) => (
   <View style={styles.buttonContainer}>
     <Button
-      style={{
+      style={cStyle || {
         container: { paddingHorizontal: 100, paddingVertical: 35 },
         text: {
-          fontSize: 20
+          fontSize: 20,
+          width: "40%"
         }
       }}
       raised
       primary
       text={text}
       upperCase={false}
-      onPress={onPress}
+      onPress={onClick}
     />
   </View>
 );

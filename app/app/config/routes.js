@@ -38,21 +38,7 @@ const ChooseLocationStack = StackNavigator(
       navigationOptions: () => ({
         headerStyle: {
           backgroundColor: colors.orange
-        },
-        headerRight: (
-          <TouchableOpacity
-            onPress={() => {
-              console.log(this.state.searchedLocation);
-              // this.props.navigation.goBack(null);
-            }}
-          >
-            <Ionicons
-              name="md-checkmark"
-              size={Header.HEIGHT - 30}
-              style={{ paddingVertical: 10, paddingHorizontal: 15 }}
-            />
-          </TouchableOpacity>
-        )
+        }
       })
     }
   },

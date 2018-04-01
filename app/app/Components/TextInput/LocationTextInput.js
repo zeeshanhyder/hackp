@@ -8,14 +8,23 @@ import {connect} from 'react-redux';
 
 import styles from "./styles";
 
-const LocationTextInput = ({ selLoc, placeholder, onPress }) => (
+function getName(loc){
+  if( !loc){
+    return null
+  }
+  loc = JSON.parse(loc)
+  return loc.name
+}
+
+const LocationTextInput = ({ backupLoc, selLoc, placeholder, onPress }) => (
   <TouchableHighlight onPress={onPress}>
     <View>
       <Card>
         <TextInput
           style={styles.defaultTextInput}
           underlineColorAndroid="transparent"
-          placeholder={selLoc || placeholder}
+          placeholder={ placeholder}
+          value={getName(selLoc)||getName(backupLoc)|| ''}
           editable={false}
         />
       </Card>

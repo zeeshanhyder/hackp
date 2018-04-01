@@ -35,10 +35,9 @@ class Home extends Component {
     });
   };
 
-  handleTaskPress = itemId => {
-    console.log(`pressed on ${itemId}`);
+  handleTaskPress = item => {
     this.props.navigation.navigate("TaskDetails", {
-      title: itemId.toString()
+      data: item
     });
   };
 
@@ -51,9 +50,9 @@ class Home extends Component {
     const taskList = (
       <FlatList
         keyExtractor={item => item.id}
-        data={this.parseData(this.props.tasks)}
+        data={this.parseData(this.props.tasks).reverse()}
         renderItem={({ item }) => (
-          <TaskCard item={item} onPress={() => this.handleTaskPress(item.id)} />
+          <TaskCard item={item} onPress={() => this.handleTaskPress(item)} />
         )}
       />
     );
@@ -66,6 +65,7 @@ class Home extends Component {
           actions={[]}
           titleColor="#fff"
           style={style.toolbar}
+        
         />
         {this.props.tasks === undefined ? loadingView : taskList}
         <View style={style.main_content}>
