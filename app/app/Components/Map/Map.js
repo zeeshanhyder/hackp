@@ -1,40 +1,39 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import MapView, { Marker } from "react-native-maps";
 
 import styles from "./styles";
 
 class Map extends Component {
-  render() {
-    const coordinates = { longitude: 40.3439888, latitude: -74.6514481 };
-    if (this.props.searchedLocation) {
-      coordinates.longitude = this.props.searchedLocation.longitude;
-      coordinates.latitude = this.props.searchedLocation.latitude;
-    }
+  state = {
+    markerSet: false,
+    coords: null
+  };
 
+  renderMarker = coords => {
+    this.setState({
+      markerSet: true,
+      coords
+    });
+  };
+
+  render() {
     return (
       <MapView
         style={{ flex: 1 }}
-        region={{
-          latitude: coordinates.latitude,
-          longitude: coordinates.longitude,
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421
         }}
-        // onPress={e => {
-        //   this.renderMarker(e.nativeEvent.coordinate);
-        // }}
+        onPress={e => this.renderMarker(e.nativeEvent.coordinate)}
       >
-        {this.props.searchedLocation ? (
-          <Marker coordinate={coordinates} />
+        {this.state.markerSet ? (
+          <Marker coordinate={this.state.coords} title="Sample Title" />
         ) : null}
       </MapView>
     );
   }
 }
-
-Map.propTypes = {
-  searchedLocation: PropTypes.any
-};
 
 export default Map;

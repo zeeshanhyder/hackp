@@ -12,12 +12,12 @@ const HomeStack = StackNavigator(
         header: () => null
       }
     },
-    NewTask: {
+    NewTask:{
       screen: NewTask
     }
   },
   {
-    // headerMode: "screen"
+    headerMode: "screen"
   }
 );
 
