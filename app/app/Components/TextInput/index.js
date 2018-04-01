@@ -1,4 +1,5 @@
 import DefaultTextInput from "./DefaultTextInput";
+import GooglePlacesInput from "./GooglePlacesInput";
 import styles from "./styles";
 
-export { DefaultTextInput, styles };
+export { GooglePlacesInput, DefaultTextInput, styles };
