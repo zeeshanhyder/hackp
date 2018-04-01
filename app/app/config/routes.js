@@ -3,6 +3,7 @@ import { StackNavigator } from "react-navigation";
 
 import Home from "../Views/Home";
 import NewTask from "../Views/NewTask";
+import TaskPopup from "../Views/TaskPopup";
 
 const HomeStack = StackNavigator(
   {
@@ -12,7 +13,7 @@ const HomeStack = StackNavigator(
         header: () => null
       }
     },
-    NewTask:{
+    NewTask: {
       screen: NewTask
     }
   },
@@ -24,7 +25,7 @@ const HomeStack = StackNavigator(
 export default StackNavigator(
   {
     Home: {
-      screen: HomeStack
+      screen: TaskPopup
     }
   },
   {
