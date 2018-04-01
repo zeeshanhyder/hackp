@@ -28,8 +28,8 @@ class Home extends Component {
     if (data === undefined) {
       return [];
     }
-    return JSON.parse(data).filter((obj)=>{
-      if(!obj.completed){
+    return JSON.parse(data).filter(obj => {
+      if (!obj.completed) {
         return obj;
       }
     });
@@ -61,11 +61,10 @@ class Home extends Component {
     return (
       <View style={{ flex: 1, flexDirection: "column" }}>
         <ToolbarAndroid
-          title="FunTaskIt"
+          title="FanTaskTic"
           actions={[]}
           titleColor="#fff"
           style={style.toolbar}
-        
         />
         {this.props.tasks === undefined ? loadingView : taskList}
         <View style={style.main_content}>

@@ -5,7 +5,8 @@ const styles = EStyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    textAlign: "center"
   }
 });
 
