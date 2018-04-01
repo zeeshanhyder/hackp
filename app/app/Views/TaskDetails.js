@@ -15,7 +15,6 @@ class TaskDetails extends Component {
     this.props.navigation.goBack(null);
   };
   handleDeleteButton = () => {
-    console.log("pressed delete");
     this.props.navigation.goBack(null);
   };
 
