@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { View, ToolbarAndroid, ScrollView, StyleSheet, Text, Button, FlatList } from 'react-native';
-import { connect } from 'react-redux'
-import { compose } from 'redux'
-import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase';
+
 
 const style = {
   'toolbar': {
@@ -23,6 +24,9 @@ const style = {
     height: 44,
   }
 }
+
+
+
 class Home extends Component {
 
   constructor(props){
@@ -35,7 +39,7 @@ class Home extends Component {
 
   _parseData(data){
     if(data === undefined){
-      return [];      
+      return [];
     }
     console.log(data)
     return JSON.parse(data)
@@ -43,11 +47,11 @@ class Home extends Component {
   render() {
     console.log(this.props.tasks)
     const { navigate } = this.props.navigation;
-    
+
     //extract keys
     _keyExtractor = (item, index) => item.id;
-    
-    
+
+
     const taskList = <FlatList keyExtractor={(item)=>item.id} data={this._parseData(this.props.tasks)} renderItem={({item}) => <Text style={style.item}>{item.task}</Text>}/>
     const loadingView = <Text>Please wait...</Text>
 
@@ -61,7 +65,7 @@ class Home extends Component {
         />
         {this.props.tasks === undefined?loadingView:taskList}
         <View style={style.main_content} >
-          
+
 
           <Button
             onPress = {()=>navigate('NewTask')}
