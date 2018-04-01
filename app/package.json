@@ -30,22 +30,26 @@
   },
   "dependencies": {
     "@expo/vector-icons": "6.2.0",
-    "axios": "^0.18.0",
+    "axios": "^0.15.0",
     "color": "^2.0.0",
     "eslint-config-prettier": "^2.9.0",
-    "expo": "^23.0.2",
+    "expo": "^24.0.0",
     "firebase": "^4.12.1",
     "hoist-non-react-statics": "2.3.0",
     "immutable": "^3.8.2",
     "moment": "2.18.1",
     "prop-types": "^15.6.1",
     "react": "16.0.0",
-    "react-native": "^0.50.4",
+    "react-axios": "^2.0.0",
+    "react-native": "0.51.0",
+    "react-native-background-geolocation": "^2.12.0-beta.3",
     "react-native-dropdownalert": "3.1.2",
     "react-native-extended-stylesheet": "0.8.0",
-    "react-native-firebase": "^3.3.1",
+    "react-native-maps": "^0.20.1",
+    "react-native-mauron85-background-geolocation": "^0.5.0-alpha.14",
     "react-navigation": "1.0.0-beta.21",
     "react-redux": "^5.0.7",
-    "react-redux-firebase": "^2.0.6"
+    "react-redux-firebase": "^2.0.6",
+    "redux": "^3.7.2"
   }
 }

@@ -2,7 +2,7 @@
  * reducer.js
  */
 
- import {ADD_TASK,DEL_TASK, TOGGLE_COMPLETED} from '../Actions/actions';
+ import {ADD_TASK,DEL_TASK, TOGGLE_COMPLETED, ON_LOCATION_SUGGESTIONS} from '../Actions/actions';
  import {combineReducers, compose} from 'redux';
  import firebase from 'firebase';
 
@@ -43,7 +43,20 @@
                     task.completed = !task.completed
                 }
             })
+        default:
+            return state;
     }
+ }
+
+ function locationSuggestions(state = {},action){
+     switch(action){
+         case ON_LOCATION_SUGGESTIONS:
+            return Object.assign({},state,{
+                locationSuggestions: action.data
+            });
+         default:
+            return state;
+     }
  }
 
 export default appState = tasks;
