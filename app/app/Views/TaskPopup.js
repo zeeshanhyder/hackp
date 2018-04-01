@@ -13,7 +13,7 @@ const style = {
     backgroundColor: '#fff',
     justifyContent: 'space-around',
     alignItems: 'center',
-    text-decoration: 'line-through',
+    'text-decoration': 'line-through',
       padding: 30,
   },
   'item': {

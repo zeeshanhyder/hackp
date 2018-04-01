@@ -1,28 +1,24 @@
 import React from "react";
 import EStyleSheet from "react-native-extended-stylesheet";
-import {reactReduxFirebase, firebaseReducer} from 'react-redux-firebase';
+import { COLOR, ThemeProvider } from "react-native-material-ui";
+import firebase from "firebase";
+import { reactReduxFirebase, firebaseReducer } from "react-redux-firebase";
+import { Provider } from "react-redux";
+import { compose, combineReducers, createStore } from "redux";
 
-import {Provider} from 'react-redux';
-import {compose, combineReducers, createStore} from 'redux';
-import {appState, rrfConfig, firebase_config} from './Reducers/reducers';
+import { appState, rrfConfig, firebaseConfig } from "./Reducers/reducers";
 import Navigator from "./config/routes";
-import firebase from 'firebase';
-
-
 
 const createStoreWithFirebase = compose(
-  reactReduxFirebase(firebase, rrfConfig),
-)(createStore)
+  reactReduxFirebase(firebase, rrfConfig)
+)(createStore);
 
 const rootReducer = combineReducers({
-  firebase: firebaseReducer,
+  firebase: firebaseReducer
+});
 
-})
-
-
-const initialState = {}
-const store = createStoreWithFirebase(rootReducer, initialState)
-
+const initialState = {};
+const store = createStoreWithFirebase(rootReducer, initialState);
 
 EStyleSheet.build({
   $primaryBlue: "#4f6d7a",
@@ -37,8 +33,22 @@ EStyleSheet.build({
   $darkText: "#343434"
 });
 
+// you can set your style right here, it'll be propagated to application
+const uiTheme = {
+  palette: {
+    primaryColor: COLOR.green500
+  },
+  toolbar: {
+    container: {
+      height: 50
+    }
+  }
+};
+
 export default () => (
   <Provider store={store}>
-    <Navigator />
+    <ThemeProvider uiTheme={uiTheme}>
+      <Navigator />
+    </ThemeProvider>
   </Provider>
 );

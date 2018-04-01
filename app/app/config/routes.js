@@ -3,6 +3,7 @@ import { StackNavigator } from "react-navigation";
 
 import Home from "../Views/Home";
 import NewTask from "../Views/NewTask";
+import CompletedTasksView from '../Views/CompletedTasksView';
 
 const HomeStack = StackNavigator(
   {
@@ -12,12 +13,15 @@ const HomeStack = StackNavigator(
         header: () => null
       }
     },
-    NewTask:{
+    NewTask: {
       screen: NewTask
+    },
+    CompletedTasksView:{
+      screen: CompletedTasksView
     }
   },
   {
-    headerMode: "screen"
+    // headerMode: "screen"
   }
 );
 

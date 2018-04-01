@@ -7,21 +7,19 @@
  import firebase from 'firebase';
 
 
-
- // Firebase init
- const firebase_config = {
-    apiKey: "AIzaSyADqkRxMlwGa7LkxJSUhUhaKbK-LGaYRRc",
-    authDomain: "funtaskplaces-1522483716126.firebaseapp.com",
-    databaseURL: "https://funtaskplaces-1522483716126.firebaseio.com",
-    projectId: "funtaskplaces-1522483716126",
-    storageBucket: "funtaskplaces-1522483716126.appspot.com",
-    messagingSenderId: "377232628281"
- }
- export const rrfConfig = {
-     userProfile: 'users'
- }
- firebase.initializeApp(firebase_config);
-
+// Firebase init
+const firebaseConfig = {
+  apiKey: "AIzaSyADqkRxMlwGa7LkxJSUhUhaKbK-LGaYRRc",
+  authDomain: "funtaskplaces-1522483716126.firebaseapp.com",
+  databaseURL: "https://funtaskplaces-1522483716126.firebaseio.com",
+  projectId: "funtaskplaces-1522483716126",
+  storageBucket: "funtaskplaces-1522483716126.appspot.com",
+  messagingSenderId: "377232628281"
+};
+export const rrfConfig = {
+  userProfile: "users"
+};
+firebase.initializeApp(firebaseConfig);
 
  // our reducer
  function tasks(state = [], action){
