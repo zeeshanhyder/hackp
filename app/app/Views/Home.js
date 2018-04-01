@@ -1,25 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {
-  View,
-  ToolbarAndroid,
-  ScrollView,
-  StyleSheet,
-  Text,
-  Button,
-  FlatList
-} from "react-native";
+import { View, ToolbarAndroid, Text, Button, FlatList } from "react-native";
 import { connect } from "react-redux";
 import { compose } from "redux";
-import { firebaseConnect, isLoaded, isEmpty } from "react-redux-firebase";
-import { Card } from "react-native-material-ui";
+import { firebaseConnect } from "react-redux-firebase";
 
 import { TaskCard } from "../Components/TaskCard";
+import colors from "../config/colors";
 
 const style = {
   toolbar: {
     height: 58,
-    backgroundColor: "#ff6f00"
+    backgroundColor: colors.orange
   },
   main_content: {
     flex: 1,
@@ -40,6 +32,13 @@ class Home extends Component {
     return JSON.parse(data);
   };
 
+  handleTaskPress = itemId => {
+    console.log(`pressed on ${itemId}`);
+    this.props.navigation.navigate("TaskDetails", {
+      title: itemId.toString()
+    });
+  };
+
   render() {
     console.log(this.props.tasks);
     const { navigate } = this.props.navigation;
@@ -51,7 +50,9 @@ class Home extends Component {
       <FlatList
         keyExtractor={item => item.id}
         data={this.parseData(this.props.tasks)}
-        renderItem={({ item }) => <TaskCard item={item} />}
+        renderItem={({ item }) => (
+          <TaskCard item={item} onPress={() => this.handleTaskPress(item.id)} />
+        )}
       />
     );
     const loadingView = <Text>Please wait...</Text>;

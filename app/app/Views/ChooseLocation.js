@@ -1,9 +1,17 @@
 import React, { Component } from "react";
-import { View, StatusBar } from "react-native";
+import {
+  View,
+  StatusBar,
+  ToolbarAndroid,
+  TouchableOpacity
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { Header } from "react-navigation";
 
 import Map from "../Components/Map";
 import { Container } from "../Components/Container";
 import { GooglePlacesInput } from "../Components/TextInput";
+import colors from "../config/colors";
 
 const API_KEY = "AIzaSyBVaWYH-NKDC9Qd3q6sTabRj8OI_ktkM-c";
 

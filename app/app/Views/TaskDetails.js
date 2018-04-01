@@ -1,25 +1,36 @@
-import React from "react";
-import { View, Text } from "react-native";
-import { Card } from "react-native-material-ui";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 import { DefaultButton } from "../Components/Button";
 import { Container } from "../Components/Container";
-import { DefaultTextInput } from "../Components/TextInput";
+import { DefaultTextInput, LocationTextInput } from "../Components/TextInput";
 
-const TaskPopup = () => (
-  <Container>
-    <View>
-      <Card>
+class TaskPopup extends Component {
+  handleLocationPress = () => {
+    this.props.navigation.navigate("ChooseLocation");
+  };
+
+  handleSubmitButton = () => {
+    console.log("SUBMITTED");
+    this.props.navigation.goBack(null);
+  };
+
+  render() {
+    return (
+      <Container>
         <DefaultTextInput placeholder="Task Name" />
-      </Card>
-    </View>
-    <View>
-      <Card>
-        <DefaultTextInput placeholder="Location" />
-      </Card>
-    </View>
-    <DefaultButton text="Task It" />
-  </Container>
-);
+        <LocationTextInput
+          placeholder="Location"
+          onPress={this.handleLocationPress}
+        />
+        <DefaultButton text="Task It" onPress={this.handleSubmitButton} />
+      </Container>
+    );
+  }
+}
+
+TaskPopup.propTypes = {
+  navigation: PropTypes.any
+};
 
 export default TaskPopup;
